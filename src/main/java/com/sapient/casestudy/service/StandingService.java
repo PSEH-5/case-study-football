@@ -1,6 +1,7 @@
 package com.sapient.casestudy.service;
 
 import com.sapient.casestudy.connector.ApiConnector;
+import com.sapient.casestudy.exception.CaseStudyException;
 import com.sapient.casestudy.response.StandingResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,18 +20,21 @@ public class StandingService {
 
         List<Map> countries = apiConnector.getCountries();
         String countryId = getCountryIdByName(countries, countryName);
+        verifyNullAndThrowException("countryId", countryId);
 
         standingResponse.setCountry_id(countryId);
         standingResponse.setCountry_name(countryName);
 
         List<Map> leagues = apiConnector.getLeagues(countryId);
         String leagueId = getLeagueIdByName(leagues, leagueName);
+        verifyNullAndThrowException("leagueId", leagueId);
 
         standingResponse.setLeague_id(leagueId);
         standingResponse.setLeague_name(leagueName);
 
         List<Map> standings = apiConnector.getStandings(leagueId);
         Map<String, String> standing = getStandingByTeamName(standings, teamName);
+        verifyNullAndThrowException("standing", standing);
 
         standingResponse.setTeam_id(standing.get("team_id"));
         standingResponse.setTeam_name(standing.get("team_name"));
@@ -68,5 +72,11 @@ public class StandingService {
             }
         }
         return null;
+    }
+
+    private void verifyNullAndThrowException(String fieldName, Object value){
+        if(value == null){
+            throw new CaseStudyException("Following field is null: "+fieldName+" make sure input is correct");
+        }
     }
 }

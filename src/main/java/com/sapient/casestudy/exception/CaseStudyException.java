@@ -9,6 +9,10 @@ import java.util.Map;
 public class CaseStudyException extends RuntimeException {
     Map<String, String> exceptionDetails = new HashMap<>();
 
+    public CaseStudyException(String msg) {
+        super(msg);
+    }
+
     public CaseStudyException(Throwable t) {
         super(t);
     }

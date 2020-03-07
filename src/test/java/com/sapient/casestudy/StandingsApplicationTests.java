@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-//@TestPropertySource(properties = {"management.port=0"})
 public class StandingsApplicationTests {
 
     @Autowired
