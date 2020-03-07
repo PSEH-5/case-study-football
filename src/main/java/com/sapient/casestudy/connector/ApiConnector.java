@@ -1,8 +1,5 @@
 package com.sapient.casestudy.connector;
 
-import com.sapient.casestudy.pojo.Country;
-import com.sapient.casestudy.pojo.League;
-import com.sapient.casestudy.pojo.Standing;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

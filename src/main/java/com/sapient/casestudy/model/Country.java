@@ -1,4 +1,4 @@
-package com.sapient.casestudy.pojo;
+package com.sapient.casestudy.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

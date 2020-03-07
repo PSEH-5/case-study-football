@@ -1,8 +1,8 @@
 package com.sapient.casestudy.service;
 
 import com.sapient.casestudy.connector.ApiConnector;
-import com.sapient.casestudy.exception.CaseStudyException;
-import com.sapient.casestudy.response.StandingResponse;
+import com.sapient.casestudy.exception.CaseStudyFbException;
+import com.sapient.casestudy.response.StandingFbResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class StandingService {
+public class StandingFbService {
 
     @Autowired
     ApiConnector apiConnector;
 
-    public StandingResponse getStandings(String countryName, String leagueName, String teamName) {
-        StandingResponse standingResponse = new StandingResponse();
+    public StandingFbResponse getStandings(String countryName, String leagueName, String teamName) {
+        StandingFbResponse standingResponse = new StandingFbResponse();
 
         List<Map> countries = apiConnector.getCountries();
         String countryId = getCountryIdByName(countries, countryName);
@@ -76,7 +76,7 @@ public class StandingService {
 
     private void verifyNullAndThrowException(String fieldName, Object value){
         if(value == null){
-            throw new CaseStudyException("Following field is null: "+fieldName+" make sure input is correct");
+            throw new CaseStudyFbException("Following field is null: "+fieldName+" make sure input is correct");
         }
     }
 }

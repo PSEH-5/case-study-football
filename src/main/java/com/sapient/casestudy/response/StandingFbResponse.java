@@ -3,7 +3,7 @@ package com.sapient.casestudy.response;
 import lombok.Data;
 
 @Data
-public class StandingResponse {
+public class StandingFbResponse {
     String country_id;
     String country_name;
     String league_id;

@@ -6,18 +6,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class CaseStudyException extends RuntimeException {
+public class CaseStudyFbException extends RuntimeException {
     Map<String, String> exceptionDetails = new HashMap<>();
 
-    public CaseStudyException(String msg) {
+    public CaseStudyFbException(String msg) {
         super(msg);
     }
 
-    public CaseStudyException(Throwable t) {
+    public CaseStudyFbException(Throwable t) {
         super(t);
     }
 
-    public CaseStudyException(String s, Throwable t) {
+    public CaseStudyFbException(String s, Throwable t) {
         super(s, t);
     }
 }

@@ -1,7 +1,7 @@
 package com.sapient.casestudy;
 
-import com.sapient.casestudy.response.StandingResponse;
-import com.sapient.casestudy.service.StandingService;
+import com.sapient.casestudy.response.StandingFbResponse;
+import com.sapient.casestudy.service.StandingFbService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,18 +9,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public class StandingsApplicationTests {
+public class StandingsFbApplicationTests {
 
     @Autowired
-    private MockMvc mvc;
-
-    @Autowired
-    private StandingService standingService;
+    private StandingFbService standingService;
 
     @Autowired
     private TestRestTemplate testRestTemplate;
@@ -28,7 +24,7 @@ public class StandingsApplicationTests {
 
     @Test
     public void getTeamStandings() {
-        StandingResponse response = standingService.getStandings("England", "Championship", "West Brom");
+        StandingFbResponse response = standingService.getStandings("England", "Championship", "West Brom");
         assert (response != null);
     }
 
