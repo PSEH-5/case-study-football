@@ -21,33 +21,33 @@ public class ApiConnector {
 
     RestTemplate restTemplate = new RestTemplate();
 
-    public List<Country> getCountries() {
+    public List getCountries() {
         UriComponentsBuilder builder = UriComponentsBuilder
                 .fromUriString(apibaseUrl)
                 .queryParam("action", "get_countries")
                 .queryParam("APIkey", apiKey);
 
-        return (List<Country>) restTemplate.getForEntity(builder.toUriString(), Object.class).getBody();
+        return (List) restTemplate.getForEntity(builder.toUriString(), Object.class).getBody();
     }
 
-    public List<League> getLeagues(String countryId) {
+    public List getLeagues(String countryId) {
         UriComponentsBuilder builder = UriComponentsBuilder
                 .fromUriString(apibaseUrl)
                 .queryParam("action", "get_leagues")
                 .queryParam("country_id", countryId)
                 .queryParam("APIkey", apiKey);
 
-        return (List<League>) restTemplate.getForEntity(builder.toUriString(), Object.class).getBody();
+        return (List) restTemplate.getForEntity(builder.toUriString(), Object.class).getBody();
     }
 
-    public List<Standing> getStandings(String leagueId) {
+    public List getStandings(String leagueId) {
         UriComponentsBuilder builder = UriComponentsBuilder
                 .fromUriString(apibaseUrl)
                 .queryParam("action", "get_standings")
                 .queryParam("league_id", leagueId)
                 .queryParam("APIkey", apiKey);
 
-        return (List<Standing>) restTemplate.getForEntity(builder.toUriString(), Object.class).getBody();
+        return (List) restTemplate.getForEntity(builder.toUriString(), Object.class).getBody();
     }
 
 }

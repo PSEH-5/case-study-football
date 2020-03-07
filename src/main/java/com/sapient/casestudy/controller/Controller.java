@@ -3,10 +3,7 @@ package com.sapient.casestudy.controller;
 import com.sapient.casestudy.response.StandingResponse;
 import com.sapient.casestudy.service.StandingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
@@ -14,10 +11,15 @@ public class Controller {
     @Autowired
     StandingService standingService;
 
-    @GetMapping("/api/standings")
+    @RequestMapping(
+            value = {"/api/standing/{countryName}/{leagueName}/{teamName}"},
+            method = {RequestMethod.GET}
+    )
     @ResponseBody
-    public StandingResponse findOne(@RequestParam String country, @RequestParam String league, @RequestParam String team) {
-        return standingService.getStandings(country, league, team);
+    public StandingResponse findOne(@PathVariable(value = "countryName", required = true) String countryName,
+                                    @PathVariable(value = "leagueName", required = true) String leagueName,
+                                    @PathVariable(value = "teamName", required = true) String teamName) {
+        return standingService.getStandings(countryName, leagueName, teamName);
     }
 }
 
