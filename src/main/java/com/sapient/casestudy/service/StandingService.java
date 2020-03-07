@@ -29,7 +29,7 @@ public class StandingService {
         standingResponse.setLeague_id(leagueId);
         standingResponse.setLeague_name(leagueName);
 
-        List<Map> standings = apiConnector.getStandings(teamName);
+        List<Map> standings = apiConnector.getStandings(leagueId);
         Map<String, String> standing = getStandingByTeamName(standings, teamName);
 
         standingResponse.setTeam_id(standing.get("team_id"));
